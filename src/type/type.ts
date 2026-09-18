@@ -1,0 +1,65 @@
+import { Decimal } from "@prisma/client/runtime/client";
+
+export interface CreateClientRequest {
+  nome?: string;
+  telefone: string;
+}
+
+export interface CarrinhoCreateRequest {
+  clienteId: string;
+}
+
+export interface CarrinhoItemCreateRequest {
+  carrinhoId: string;
+  produtoId: string;
+  quantidade: number;
+  observacao?: string;
+}
+
+export interface CarrinhoItemAdicionalCreateRequest {
+  carrinhoItemId: string;
+  adicionalId: string;
+  quantidade: number;
+}
+
+export interface AdicionalCreateRequest {
+  nome: string;
+  preco: number;
+}
+
+export interface ProdutoAdicionalCreateRequest {
+  produtoId: string;
+  adicionalId: string;
+}
+
+export interface ProdutoResponse {
+  id: string;
+  nome: string;
+  descricao: string | null;
+  preco: Decimal;
+  disponivel: boolean;
+  ativo: boolean;
+  categoriaId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ProdutoCreateRequest {
+  nome: string;
+  descricao: string | null; // O usuário pode mandar null ou você pode usar 'string?'
+  preco: number; // O frontend manda 15.99 (number) e o Prisma aceita!
+  disponivel?: boolean; // Opcional, pois tem @default(true) no banco
+  ativo?: boolean; // Opcional, pois tem @default(true) no banco
+  categoriaId: string; // Obrigatório para vincular à categoria
+}
+
+export interface CardapioCreateRequest {
+  data: string;
+}
+
+export interface CardapioItemCreateRequest {
+  cardapioId: string;
+  produtoId: string;
+  preco: number;
+  ordem?: number;
+}
