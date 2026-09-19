@@ -31,6 +31,10 @@ export interface ProdutoAdicionalCreateRequest {
   produtoId: string;
   adicionalId: string;
 }
+export interface RemoveCartRequest {
+  carrinhoItemId: string;
+  ingrediente: string;
+}
 
 export interface ProdutoResponse {
   id: string;
@@ -62,4 +66,9 @@ export interface CardapioItemCreateRequest {
   produtoId: string;
   preco: number;
   ordem?: number;
+}
+
+export interface BairroCreateRequest {
+  nome: string;
+  taxaEntrega: number;
 }

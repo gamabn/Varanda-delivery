@@ -19,10 +19,17 @@ import { getMenuController } from "../controllers/menu/getMeuController";
 import { createCartController } from "../controllers/car/createCarController";
 import { createCartItemController } from "../controllers/car/createCartItemController";
 import { createCartItemAdditionalController } from "../controllers/car/createCartItemAdicionalController";
+import { cartRemoveController } from "../controllers/car/cartRemoveController";
+import { getCartController } from "../controllers/car/getCartController";
 
 //=============================Adicionais para produto=============================
 import { createAdditionalController } from "../controllers/adicional/createAdditionalController";
 import { createProductAdditionalController } from "../controllers/adicional/creatProductAdditionalController";
+
+//=============================BAIRRO=============================
+import { createBairroController } from "../controllers/neighborhood/createNeighborhoodController";
+import { listBairroController } from "../controllers/neighborhood/listNeiborhood.Controller";
+import { getBairroController } from "../controllers/neighborhood/getIdNeighborhoodController";
 
 const router = Router();
 
@@ -51,6 +58,8 @@ router.post(
   "/cart-item-additional",
   new createCartItemAdditionalController().handle,
 );
+router.post("/cart-item-remove", new cartRemoveController().handle);
+router.get("/getCart/:id", new getCartController().handle);
 
 //=========================ADICIONAIS PARA PRODUTOS=============
 router.post("/createAdditional", new createAdditionalController().handle);
@@ -58,5 +67,10 @@ router.post(
   "/product-additional",
   new createProductAdditionalController().handle,
 );
+
+//===================================Bairro=======================================
+router.post("/createBairro", new createBairroController().handle);
+router.get("/listBairro", new listBairroController().handle);
+router.get("/getBairro/:id", new getBairroController().handle);
 
 export { router };
